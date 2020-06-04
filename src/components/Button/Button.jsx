@@ -26,17 +26,7 @@ export default Button
 
 
 /*
-Variables
-
-Con Styled components podemos crear cualquier variable:
-
-const color = 'royalblue'
-const padding = '2rem'
-
-Para utilizar esa variable lo unico que tenemos que hacer es interpolarla exactamente igual que en un template string:
-
-background-color: ${color};
-padding: ${padding};
+Estilos dinámicos con funciones
 
 
 
