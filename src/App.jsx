@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import Title from './components/Title'
-import Button from './components/Button'
+import Title from './components/Title';
+import Button from './components/Button';
 
-import {ThemeProvider} from 'styled-components'
+import { ThemeProvider } from 'styled-components'
 import colors from './theming/colors'
-
 
 class App extends Component {
 
@@ -13,14 +12,13 @@ class App extends Component {
             <>
                 <Title />
                 <ThemeProvider theme={colors}>
-                    <Button >Click me!</Button>
-                    <Button danger>Click me!</Button>
-                    <Button ghost>Ghost me!</Button>
-                    <Button danger ghost>Ghost me!</Button>
+                    <Button>Click Me!</Button>
+                    <Button danger>Click Me!</Button>
+                    <Button ghost>Ghost Me!</Button>
+                    <Button danger ghost>Ghost Me!</Button>
                 </ThemeProvider>
             </>
         )
-        
     }
 }
 
