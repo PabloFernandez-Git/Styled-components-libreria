@@ -1,5 +1,6 @@
 import styled, {css} from 'styled-components'
 
+
 const Button = styled.button`
     padding: .5rem .8rem;
     border: none;
@@ -7,22 +8,22 @@ const Button = styled.button`
     margin-right: 1rem;
     margin-bottom: 1rem;
     color: #fff;
-    background-color: royalblue;
+    background-color: ${({ theme }) => theme.primary};
 
     ${({danger, ghost}) => danger && ghost && css`
         background-color: transparent;
         color: red;
-        border: 1px solid red;
+        border: 1px solid ${({ theme }) => theme.danger};
     `}
 
     ${({danger, ghost}) => danger && !ghost && css`
-        background-color: red;   
+        background-color: ${({ theme }) => theme.danger};   
     `}
 
     ${({danger, ghost}) => !danger && ghost && css`
         background-color: transparent;
-        color: royalblue;
-        border: 1px solid royalblue;
+        color: ${({ theme }) => theme.primary};
+        border: 1px solid ${({ theme }) => theme.primary};
     `}
 
 `
@@ -31,17 +32,46 @@ export default Button;
 
 
 /*
-Usando el módulo css (de 'styled-components')
+ThemeProvider
 
-Vamos a importar un modulo que nos da 'styled-components' que es {css}
+En los proyectos se suelen separar los colores en un archivo aparte (theming/colors.js)
 
-import styled, {css} from 'styled-components'
+styled-components nos brinda una solucion muy simple para administrar los colores de nuestra aplicacion.
 
-Con esto nosotros podemos interpolar template strings que es lo que necesitamos hacer.
-Al tener que usar mas de una propiedad necesitamos un template string para que se interpole con el template string que ya necesita el componente (styled.button) de por si.
+ThemeProvider nos da la opcion de utilizar el archivo 'colors.js' en un unico sitio y utilizarlo en cada uno de los componentes que necesitemos.
 
-Esta misma logica la podemos aplicar para todo tipo de botones u otros componentes (formularios, imagenes, parrafos, titulos) donde queremos tener un estilo por defecto y en funcion de algunas props que puedan cambiar sin tener que reescribir todo el componente. 
+La principal ventaja de ThemeProvider es que podemos controlar nuestros colores desde un unico archivo.
+Simplemente importando ThemeProvider, la hoja con los colores y rodeando los componentes con la etiqueta <ThemeProvider theme={colors}></ThemeProvider> ya tenemos disponibles los colores donde queramos usarlos.
 
-Esta es la forma de generar varios estilos en funcion de props e interpolando template string con el modulo de css.
+
+
+1. Debemos importar ThemeProvider en nuestro 'App.js' para poder utilizarlo. 
+ThemeProvider nos da la posibilidad de usar nuestro archivo 'colors.js' en un unico lugar y aplicarlo a cada uno de los componentes que hagan falta. 
+
+import {ThemeProvider} from 'styled-components'
+import colors from './theming/colors'
+
+2. Como {ThemeProvider} es un componente lo unico que resta es utilizarlo en el sitio donde queremos englobar todos los componentes que vayan a utilizar los estilos.
+
+<ThemeProvider theme={colors}>
+    <Button >Click me!</Button>
+    <Button danger>Click me!</Button>
+    <Button ghost>Ghost me!</Button>
+    <Button danger ghost>Ghost me!</Button>
+</ThemeProvider>
+
+{ThemeProvider} necesita una prop 'theme' igualada a nuestro archivo contenedor de los colores.
+
+<ThemeProvider theme={colors}>
+
+3. Finalmente para utilizarlo vamos al componente (en este caso Button.jsx)
+
+Debemos acceder a traves de las props al color.
+Destructuramos la prop 'theme' para usar el color.
+
+background-color: ${({ theme }) => theme.primary};
+background-color: ${({ theme }) => theme.danger};
+
+
 
 */
