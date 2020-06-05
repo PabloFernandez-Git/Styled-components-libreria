@@ -19,10 +19,4 @@ const Title = () => {
 
 export default Title
 
-/*
-Estilos dinámicos con funciones
 
-
-
-
-*/
