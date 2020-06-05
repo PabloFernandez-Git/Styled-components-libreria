@@ -8,8 +8,8 @@ class App extends Component {
         return (
             <>
                 <Title />
-                <Button bgcolor='red'>Click me!</Button>
-                <Button bgcolor='royalblue'>Click me!</Button>
+                <Button danger>Click me!</Button>
+                <Button >Click me!</Button>
             </>
         )
         

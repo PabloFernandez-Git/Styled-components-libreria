@@ -1,11 +1,10 @@
-
 import styled from 'styled-components'
 
 const Button = styled.button`
     padding: .5rem .8rem;
     border: none;
     outline: none;
-    background-color: ${({ bgcolor }) => bgcolor};
+    background-color: ${({ danger }) => danger ? 'red' : 'royalblue'};
     color: #fff; 
 `
 
@@ -13,16 +12,18 @@ export default Button;
 
 
 /*
-Estilos dinámicos con props
+Estilos dinámicos con operador ternario
 
-Nos permite reutilizar el codigo para generar dos botones iguales pero con diferente color (u otra propiedad):
+Podemos dar un color por defecto en caso que no llegue la prop usando || :
 
-Usando props y extrayendo esa propiedad:
-background-color: ${(props) => props.bgcolor};
+background-color: ${({ bgcolor }) => bgcolor || 'purple'};
 
-Usando props y destructurando:
-background-color: ${({ bgcolor }) => bgcolor};
 
+Podemos dar estilos usando un operador ternario en base a un booleano:
+
+background-color: ${({ danger }) => danger ? 'red' : 'royalblue'};
+
+Usando esta condicion los botones con el atributo ‘danger’ se le aplicara el color ‘red’ y los que no la posean se les aplicara el color ‘royalblue’.
 
 
 */
