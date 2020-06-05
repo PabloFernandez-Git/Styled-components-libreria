@@ -1,29 +1,47 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 
 const Button = styled.button`
     padding: .5rem .8rem;
     border: none;
     outline: none;
-    background-color: ${({ danger }) => danger ? 'red' : 'royalblue'};
-    color: #fff; 
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    background-color: royalblue;
+
+    ${({danger, ghost}) => danger && ghost && css`
+        background-color: transparent;
+        color: red;
+        border: 1px solid red;
+    `}
+
+    ${({danger, ghost}) => danger && !ghost && css`
+        background-color: red;   
+    `}
+
+    ${({danger, ghost}) => !danger && ghost && css`
+        background-color: transparent;
+        color: royalblue;
+        border: 1px solid royalblue;
+    `}
+
 `
 
 export default Button;
 
 
 /*
-Estilos dinámicos con operador ternario
+Usando el módulo css (de 'styled-components')
 
-Podemos dar un color por defecto en caso que no llegue la prop usando || :
+Vamos a importar un modulo que nos da 'styled-components' que es {css}
 
-background-color: ${({ bgcolor }) => bgcolor || 'purple'};
+import styled, {css} from 'styled-components'
 
+Con esto nosotros podemos interpolar template strings que es lo que necesitamos hacer.
+Al tener que usar mas de una propiedad necesitamos un template string para que se interpole con el template string que ya necesita el componente (styled.button) de por si.
 
-Podemos dar estilos usando un operador ternario en base a un booleano:
+Esta misma logica la podemos aplicar para todo tipo de botones u otros componentes (formularios, imagenes, parrafos, titulos) donde queremos tener un estilo por defecto y en funcion de algunas props que puedan cambiar sin tener que reescribir todo el componente. 
 
-background-color: ${({ danger }) => danger ? 'red' : 'royalblue'};
-
-Usando esta condicion los botones con el atributo ‘danger’ se le aplicara el color ‘red’ y los que no la posean se les aplicara el color ‘royalblue’.
-
+Esta es la forma de generar varios estilos en funcion de props e interpolando template string con el modulo de css.
 
 */

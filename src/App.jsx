@@ -8,8 +8,10 @@ class App extends Component {
         return (
             <>
                 <Title />
-                <Button danger>Click me!</Button>
                 <Button >Click me!</Button>
+                <Button danger>Click me!</Button>
+                <Button ghost>Ghost me!</Button>
+                <Button danger ghost>Ghost me!</Button>
             </>
         )
         
@@ -17,5 +19,3 @@ class App extends Component {
 }
 
 export default App;
-
-
