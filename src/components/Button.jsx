@@ -1,4 +1,11 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
+
+
+const rotate = keyframes`
+    to{
+        transform: rotate(360deg)
+    }
+`
 
 const Button = styled.button`
     padding: .5rem .8rem;
@@ -9,6 +16,7 @@ const Button = styled.button`
     color:#fff;
     background-color: ${({ theme }) => theme.primary};
     transition: color, background-color 1s;
+    animation: ${rotate} 2s;
 
     &:hover{
         color: #fff;
@@ -36,16 +44,28 @@ export default Button;
 
 
 /*
-Transiciones
+Animaciones
 
-Se realizan de la misma forma que en css tradicional.
+Para realizar animaciones a traves de 'Styled components' necesitamos la funcion 'keyframes'.
+La opcion mas comoda para usarla es destructurarla.
 
-transition: color, background-color 1s;
+import styled, { css, keyframes } from 'styled-components'
 
-&:hover{
-    color: #fff;
-    background-color: blue;
-}
+Para utilizarla lo primero que tenemos que hacer es crear nuestra animacion en una constante.
+Creamos un styled-component y dentro de este construimos la animacion exactamente igual que en CSS.
+
+const rotate = keyframes`
+    to{
+        transform: rotate(360deg)
+    }
+`
+
+Para utilizarla, al componente que queremos aplicarle la animacion se la pasamos como una propiedad mas.
+Como la animacion la construimos en una constante necesitamos interpolarla y luego pasarle el tiempo. 
+
+animation: ${rotate} 2s;
+
+
 
 
 */
