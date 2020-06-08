@@ -1,9 +1,16 @@
 import styled, { css, keyframes } from 'styled-components'
 
-
 const rotate = keyframes`
-    to{
-        transform: rotate(360deg)
+    0%{
+        transform:rotate(0)
+    }
+
+    50%{
+        transform:rotate(180deg)
+    }
+
+    100%{
+        transform:rotate(360deg)
     }
 `
 
@@ -15,11 +22,11 @@ const Button = styled.button`
     margin-bottom:1rem;
     color:#fff;
     background-color: ${({ theme }) => theme.primary};
-    transition: color, background-color 1s;
-    /* animation: ${rotate} 2s; */
+    transition: color, background-color 2s;
+    /* animation: ${rotate} 1.5s; */
 
     &:hover{
-        color: #fff;
+        color:#fff;
         background-color: blue;
     }
 
@@ -38,8 +45,8 @@ const Button = styled.button`
         color: ${({ theme }) => theme.primary};
         border:1px solid ${({ theme }) => theme.primary};
     `}
+
+    
 `
 
 export default Button;
-
-
