@@ -8,6 +8,12 @@ const Button = styled.button`
     margin-bottom:1rem;
     color:#fff;
     background-color: ${({ theme }) => theme.primary};
+    transition: color, background-color 1s;
+
+    &:hover{
+        color: #fff;
+        background-color: blue;
+    }
 
     ${({ danger, ghost }) => danger && ghost && css`
         background-color: transparent;
@@ -27,3 +33,19 @@ const Button = styled.button`
 `
 
 export default Button;
+
+
+/*
+Transiciones
+
+Se realizan de la misma forma que en css tradicional.
+
+transition: color, background-color 1s;
+
+&:hover{
+    color: #fff;
+    background-color: blue;
+}
+
+
+*/
